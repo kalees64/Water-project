@@ -128,7 +128,7 @@ export default function Home() {
           </Link>
           <Text>
             Don't have an account?{" "}
-            <Link href="/" style={{ fontWeight: "bold" }}>
+            <Link href="/createAcc1" style={{ fontWeight: "bold" }}>
               Sign up
             </Link>
           </Text>

@@ -12,7 +12,9 @@ export default function HomeScreen() {
     >
       <View style={styles.par}>
         <Text style={styles.tittle}>Welcome</Text>
-        <Text style={styles.account}>Create an Account</Text>
+        <Link href="/createAcc1" style={styles.account}>
+          <Text>Create an Account</Text>
+        </Link>
         <Link href="/signin" style={styles.account}>
           <Text>Sign in</Text>
         </Link>
