@@ -89,7 +89,7 @@ export default function Home() {
               style={{ width: "20%" }}
             ></Icon2>
             <TextInput
-              placeholder="Enter Your Email"
+              placeholder="Enter Your Password"
               style={{ width: "80%", padding: 10, fontSize: 20 }}
             />
           </View>

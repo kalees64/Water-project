@@ -4,9 +4,10 @@ import Icon1 from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/MaterialIcons";
 import Icon3 from "react-native-vector-icons/MaterialIcons";
 import Icon4 from "react-native-vector-icons/Entypo";
-import Icon5 from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon5 from "react-native-vector-icons/SimpleLineIcons";
 import Icon6 from "react-native-vector-icons/Octicons";
 import Icon7 from "react-native-vector-icons/AntDesign";
+import { Image } from "react-native";
 
 export default function shops() {
   return (
@@ -62,12 +63,20 @@ export default function shops() {
           <Icon4 name="shop" size={30} color="black"></Icon4>
           <Text style={{ color: "black" }}>Shop</Text>
         </View>
-        <Icon5
-          name="qrcode-scan"
+        {/* <Icon5
+          name="menu"
           size={30}
           color="white"
           style={{ backgroundColor: "black", padding: 10, borderRadius: 50 }}
-        ></Icon5>
+        ></Icon5> */}
+        <View
+          style={{ backgroundColor: "white", padding: 10, borderRadius: 50 }}
+        >
+          <Image
+            source={require("../assets/images/menuIcon.png")}
+            style={{ width: 30, height: 30 }}
+          />
+        </View>
         <View
           style={{
             display: "flex",
