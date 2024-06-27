@@ -4,7 +4,7 @@ import Icon1 from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/MaterialIcons";
 import Icon3 from "react-native-vector-icons/MaterialIcons";
 import Icon4 from "react-native-vector-icons/Entypo";
-import Icon5 from "react-native-vector-icons/SimpleLineIcons";
+// import Icon5 from "react-native-vector-icons/SimpleLineIcons";
 import Icon6 from "react-native-vector-icons/Octicons";
 import Icon7 from "react-native-vector-icons/AntDesign";
 import { Image } from "react-native";
@@ -23,7 +23,15 @@ export default function shops() {
           padding: 10,
         }}
       >
-        <Text style={{ fontSize: 25, fontWeight: "bold" }}>THANNICAN</Text>
+        <Text
+          style={{
+            fontSize: 25,
+            fontWeight: "bold",
+            fontFamily: "Lexend-Bold",
+          }}
+        >
+          THANNICAN
+        </Text>
         <View style={{ display: "flex", flexDirection: "row", gap: 10 }}>
           <Icon1 name="search" size={25} color="white"></Icon1>
           <Icon2 name="notifications-active" size={25} color="white"></Icon2>

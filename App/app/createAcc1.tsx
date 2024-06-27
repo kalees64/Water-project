@@ -9,81 +9,174 @@ import {
 } from "react-native";
 import { Link } from "expo-router";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Icon1 from "react-native-vector-icons/EvilIcons";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.parent}>
+    <SafeAreaView>
       <View style={{ padding: 20 }}>
         <Text style={{ fontSize: 29, fontWeight: "bold" }}>THANNICAN</Text>
       </View>
-      <View style={{ paddingLeft: 20 }}>
-        <Text style={{ justifyContent: "flex-start" }}>
-          <Link href="/home">
-            <Icon1 name="arrow-left" size={40} color="black" />
-          </Link>
-        </Text>
-      </View>
-      <View style={{ padding: 20, width: "100%" }}>
+      <View style={{ padding: 20 }}>
         <Text style={{ textAlign: "center", fontWeight: "bold", fontSize: 35 }}>
           Create Account
         </Text>
       </View>
-      <View style={styles.child}>
-        <Icon
-          name="user"
-          style={{ textAlign: "right", fontWeight: "bold", fontSize: 25 }}
-        ></Icon>
-        <TextInput
-          style={{ paddingLeft: 80 }}
-          placeholder="Enter Your Email"
-        ></TextInput>
-      </View>
-      <View style={styles.child}>
-        <Icon
-          name="envelope-o"
-          style={{ textAlign: "right", fontWeight: "bold", fontSize: 25 }}
-        ></Icon>
-        <TextInput style={{ paddingLeft: 80 }} placeholder="Enter Your Email" />
-      </View>
-      <View style={styles.child}>
-        <Icon
-          name="lock"
-          style={{ textAlign: "right", fontWeight: "bold", fontSize: 25 }}
-        ></Icon>
-        <TextInput style={{ paddingLeft: 80 }} placeholder="Create Password" />
-        <Icon
-          name="eye"
+      <View style={{ gap: 20, padding: 20 }}>
+        <View
           style={{
-            textAlign: "left",
-            fontWeight: "bold",
-            fontSize: 25,
-            marginLeft: 30,
+            width: "100%",
+            height: 40,
+            paddingHorizontal: 20,
+            display: "flex",
+            flexDirection: "row",
+            shadowColor: "#b3b3b3",
+            shadowOffset: { width: 2, height: 4 },
+            borderRadius: 10,
+            borderColor: "#aeaeae",
+            borderWidth: 1,
           }}
-        ></Icon>
-      </View>
-      <View style={styles.child}>
-        <Icon
-          name="lock"
-          style={{ textAlign: "right", fontWeight: "bold", fontSize: 25 }}
-        ></Icon>
-        <TextInput style={{ paddingLeft: 80 }} placeholder="Confirm Password" />
-        <Icon
-          name="eye"
+        >
+          <Icon
+            name="user"
+            style={{
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: 25,
+              paddingTop: 5,
+            }}
+          ></Icon>
+          <TextInput
+            placeholder="Enter Your Name"
+            style={{
+              width: "100%",
+              fontSize: 15,
+              textAlign: "center",
+            }}
+          ></TextInput>
+        </View>
+
+        <View
           style={{
-            textAlign: "left",
-            fontWeight: "bold",
-            fontSize: 25,
-            marginLeft: 30,
+            width: "100%",
+            height: 40,
+            paddingHorizontal: 20,
+            display: "flex",
+            flexDirection: "row",
+            shadowColor: "#b3b3b3",
+            shadowOffset: { width: 2, height: 4 },
+            borderRadius: 10,
+            borderColor: "#aeaeae",
+            borderWidth: 1,
           }}
-        ></Icon>
+        >
+          <Icon
+            name="envelope-o"
+            style={{
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: 25,
+              paddingTop: 5,
+            }}
+          ></Icon>
+          <TextInput
+            placeholder="Enter Your Email"
+            style={{
+              width: "100%",
+              fontSize: 15,
+              textAlign: "center",
+            }}
+          ></TextInput>
+        </View>
+
+        <View
+          style={{
+            width: "100%",
+            height: 40,
+            paddingHorizontal: 20,
+            display: "flex",
+            flexDirection: "row",
+            shadowColor: "#b3b3b3",
+            shadowOffset: { width: 2, height: 4 },
+            borderRadius: 10,
+            borderColor: "#aeaeae",
+            borderWidth: 1,
+          }}
+        >
+          <Icon
+            name="lock"
+            style={{
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: 25,
+              paddingTop: 5,
+            }}
+          ></Icon>
+          <TextInput
+            placeholder="Create Password"
+            style={{
+              width: "100%",
+              fontSize: 15,
+              textAlign: "center",
+            }}
+          ></TextInput>
+          <Icon
+            name="eye"
+            style={{
+              textAlign: "left",
+              fontWeight: "bold",
+              fontSize: 25,
+            }}
+          ></Icon>
+        </View>
+
+        <View
+          style={{
+            width: "100%",
+            height: 40,
+            paddingHorizontal: 20,
+            display: "flex",
+            flexDirection: "row",
+            shadowColor: "#b3b3b3",
+            shadowOffset: { width: 2, height: 4 },
+            borderRadius: 10,
+            borderColor: "#aeaeae",
+            borderWidth: 1,
+          }}
+        >
+          <Icon
+            name="lock"
+            style={{
+              textAlign: "right",
+              fontWeight: "bold",
+              fontSize: 25,
+              paddingTop: 5,
+            }}
+          ></Icon>
+          <TextInput
+            placeholder="Confirm Password"
+            style={{
+              width: "100%",
+              fontSize: 15,
+              textAlign: "center",
+            }}
+          ></TextInput>
+          <Icon
+            name="eye"
+            style={{
+              textAlign: "left",
+              fontWeight: "bold",
+              fontSize: 25,
+            }}
+          ></Icon>
+        </View>
       </View>
+
       <Link
-        href="/createAcc2"
+        href="/"
         style={{
           backgroundColor: "#3fbdf1",
-          paddingVertical: 8,
-          paddingHorizontal: 130,
+          textAlign: "center",
+          paddingTop: 7,
           fontSize: 18,
           fontWeight: "bold",
           color: "white",
@@ -97,19 +190,22 @@ export default function HomeScreen() {
           shadowOffset: { width: 2, height: 4 },
         }}
       >
-        <Text>Submit</Text>
+        <Text>Next</Text>
       </Link>
+
       <Text style={{ textAlign: "center" }}>
         Already have an account?{" "}
-        <Link href="/signin" style={{ fontWeight: "bold" }}>
+        <Link href="/" style={{ fontWeight: "bold" }}>
           Sign in
         </Link>
       </Text>
+
       <Text style={{ textAlign: "center", marginTop: 20 }}>
         Sign up with social Account?{" "}
       </Text>
+
       <View style={styles.bottom}>
-        <Icon name="google" style={{ fontSize: 30, marginRight: 30 }}></Icon>
+        <Icon name="google" style={{ fontSize: 30 }}></Icon>
         <Icon name="facebook-square" style={{ fontSize: 30 }}></Icon>
       </View>
     </SafeAreaView>
@@ -121,28 +217,29 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 17,
     borderWidth: 1,
-    padding: 10,
+
     borderRadius: 8,
     backgroundColor: "#e6e6e6",
     borderColor: "transparent",
     shadowColor: "#b3b3b3",
     shadowOffset: { width: 2, height: 4 },
     display: "flex",
-    width: "90%",
+    width: "100%",
     flexDirection: "row",
   },
   tittle: {
     color: "black",
   },
   parent: {
-    height: "100%",
-    width: "100%",
+    height: 667,
+    width: 375,
+    backgroundColor: "#C4DFE6",
   },
   bottom: {
     display: "flex",
     flexDirection: "row",
-    textAlign: "center",
-    marginLeft: 150,
-    marginTop: 25,
+    width: "100%",
+    justifyContent: "center",
+    gap: 20,
   },
 });
