@@ -5,9 +5,9 @@ import LandingScreen from "./screens/LandingScreen";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>ThanniCan APP</Text>
+      <Text>ThanniCan APP Vanakkam</Text>
       <StatusBar style="auto" />
-      <LandingScreen />
+      {/* <LandingScreen /> */}
     </View>
   );
 }
