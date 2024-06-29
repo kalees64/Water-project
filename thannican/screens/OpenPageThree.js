@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/EvilIcons";
+import DataContext from "../context/DataContext";
 
 const OpenPageThree = ({ navigation }) => {
   return (
@@ -59,10 +60,11 @@ const OpenPageThree = ({ navigation }) => {
           </Text>
         </View>
         <View style={{ width: "100%" }}>
-          <Text
+          <View
             style={{
               textAlign: "center",
               display: "flex",
+              flexDirection: "row",
               justifyContent: "center",
               gap: 20,
             }}
@@ -70,7 +72,7 @@ const OpenPageThree = ({ navigation }) => {
             <Icon name="circle-o" size={20} color="black" />
             <Icon name="circle-o" size={20} color="black" />
             <Icon name="circle" size={20} color="black" />
-          </Text>
+          </View>
         </View>
         <View
           style={{
@@ -90,7 +92,9 @@ const OpenPageThree = ({ navigation }) => {
               color: "white",
               borderRadius: 10,
             }}
-            onPress={() => navigation.navigate("entrance")}
+            onPress={() => {
+              navigation.navigate("home");
+            }}
           >
             Get Started
           </Text>

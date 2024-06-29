@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,10 +10,15 @@ import {
   Alert,
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
-import Icon2 from "react-native-vector-icons/MaterialIcons";
+import Icon2 from "react-native-vector-icons/MaterialCommunityIcons";
 import Icon1 from "react-native-vector-icons/EvilIcons";
+import DataContext from "../context/DataContext";
 
 const SignInScreen = ({ navigation }) => {
+  const { email, setEmail, password, setPassword, handleLogin } =
+    useContext(DataContext);
+
+  const [passState, setPassState] = useState(true);
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -66,6 +71,9 @@ const SignInScreen = ({ navigation }) => {
             <TextInput
               placeholder="Enter Your Email"
               style={{ width: "80%", padding: 10, fontSize: 20 }}
+              inputMode="email"
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
           <View
@@ -86,14 +94,18 @@ const SignInScreen = ({ navigation }) => {
             }}
           >
             <Icon2
-              name="remove-red-eye"
+              name={`${passState ? "eye-off" : "eye"}`}
               size={40}
               color="black"
               style={{ width: "20%" }}
+              onPress={() => setPassState(!passState)}
             ></Icon2>
             <TextInput
               placeholder="Enter Your Password"
               style={{ width: "80%", padding: 10, fontSize: 20 }}
+              secureTextEntry={passState}
+              value={password}
+              onChangeText={setPassword}
             />
           </View>
         </View>
@@ -125,7 +137,9 @@ const SignInScreen = ({ navigation }) => {
               color: "white",
               borderRadius: 10,
             }}
-            onPress={() => Alert.alert("Working...")}
+            onPress={() => {
+              handleLogin();
+            }}
           >
             Submit
           </Text>

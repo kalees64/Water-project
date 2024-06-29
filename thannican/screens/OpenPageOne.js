@@ -15,7 +15,14 @@ const OpenPageOne = ({ navigation }) => {
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={{ padding: 20 }}>
-          <Text style={{ fontSize: 40, fontWeight: "bold" }}>THANNICAN</Text>
+          <Text
+            style={{
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            THANNICAN
+          </Text>
         </View>
         <View style={{ paddingLeft: 20 }}>
           <Text style={{ justifyContent: "flex-start" }}>
@@ -43,7 +50,11 @@ const OpenPageOne = ({ navigation }) => {
           }}
         >
           <Text
-            style={{ fontWeight: "bold", fontSize: 22, textAlign: "center" }}
+            style={{
+              fontWeight: "bold",
+              fontSize: 22,
+              textAlign: "center",
+            }}
           >
             We provide best quality water
           </Text>
@@ -59,10 +70,11 @@ const OpenPageOne = ({ navigation }) => {
           </Text>
         </View>
         <View style={{ width: "100%" }}>
-          <Text
+          <View
             style={{
               textAlign: "center",
               display: "flex",
+              flexDirection: "row",
               justifyContent: "center",
               gap: 20,
             }}
@@ -70,7 +82,7 @@ const OpenPageOne = ({ navigation }) => {
             <Icon name="circle" size={20} color="black" />
             <Icon name="circle-o" size={20} color="black" />
             <Icon name="circle-o" size={20} color="black" />
-          </Text>
+          </View>
         </View>
         <View
           style={{

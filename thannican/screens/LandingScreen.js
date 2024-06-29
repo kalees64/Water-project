@@ -12,21 +12,22 @@ const LandingScreen = ({ navigation }) => {
     >
       <View>
         <Text style={styles.tittle}>THANNICAN</Text>
-        <Text
+        <View
           style={{
             width: "100%",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
+            height: 50,
           }}
         >
           <FontAwesome
             name="play"
-            size={45}
+            size={40}
             color="white"
             onPress={() => navigation.navigate("one")}
           />
-        </Text>
+        </View>
       </View>
     </ImageBackground>
   );

@@ -59,10 +59,11 @@ const OpenPageTwo = ({ navigation }) => {
           </Text>
         </View>
         <View style={{ width: "100%" }}>
-          <Text
+          <View
             style={{
               textAlign: "center",
               display: "flex",
+              flexDirection: "row",
               justifyContent: "center",
               gap: 20,
             }}
@@ -70,7 +71,7 @@ const OpenPageTwo = ({ navigation }) => {
             <Icon name="circle-o" size={20} color="black" />
             <Icon name="circle" size={20} color="black" />
             <Icon name="circle-o" size={20} color="black" />
-          </Text>
+          </View>
         </View>
         <View
           style={{
