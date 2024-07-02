@@ -1,5 +1,7 @@
+import { collection, getDocs } from "firebase/firestore";
 import { createContext, useState } from "react";
 import { Alert } from "react-native";
+import { db } from "../services/FireBaseAuth";
 
 const DataContext = createContext({});
 
@@ -28,6 +30,20 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  //get shops Data from firestore
+
+  const [shops, setShops] = useState([]);
+
+  const getShops = async () => {
+    const res = await getDocs(collection(db, "shops"));
+    let allShops = [];
+    res.forEach((doc) => {
+      // console.log(doc.data());
+      allShops.push(doc.data());
+      setShops(allShops);
+    });
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -44,6 +60,9 @@ export const DataProvider = ({ children }) => {
         password,
         setPassword,
         handleLogin,
+        getShops,
+        shops,
+        setShops,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import TopBar from "./TopBar";
 import BottomTabBar from "./BottomTabBar";
 import { SafeAreaView, Text, View, Image, ScrollView } from "react-native";
@@ -13,8 +13,10 @@ import Icon9 from "react-native-vector-icons/Fontisto";
 import Icon8 from "react-native-vector-icons/FontAwesome";
 import Icon10 from "react-native-vector-icons/FontAwesome6";
 import Icon11 from "react-native-vector-icons/EvilIcons";
+import DataContext from "../context/DataContext";
 
 const ShopsScreen = ({ navigation }) => {
+  const { shops } = useContext(DataContext);
   return (
     <SafeAreaView style={{ width: "100%", height: "100%" }}>
       <TopBar navigation={navigation} />
@@ -52,7 +54,189 @@ const ShopsScreen = ({ navigation }) => {
         >
           <Text style={{ fontSize: 25, fontWeight: "bold" }}>Recommanded</Text>
         </View>
-        <View
+
+        {shops.length > 0 ? (
+          shops.map((shop) => {
+            return (
+              <View
+                key={shop.ShopId}
+                style={{
+                  width: "100%",
+                  paddingHorizontal: 15,
+                  paddingVertical: 5,
+                }}
+              >
+                <View
+                  style={{
+                    width: "100%",
+                    borderWidth: 1,
+                    padding: 10,
+                    borderColor: "gray",
+                    borderRadius: 5,
+                  }}
+                >
+                  <View style={{ width: "100%", flexDirection: "row" }}>
+                    <View style={{ width: "42%" }}>
+                      <View style={{ width: "100%" }}>
+                        <View
+                          style={{
+                            width: "100%",
+                            flexDirection: "row",
+                            gap: 10,
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                            {shop.ShopName}
+                          </Text>
+                          <View
+                            style={{
+                              flexDirection: "row",
+                              justifyContent: "space-around",
+                              alignItems: "center",
+                              gap: 5,
+                            }}
+                          >
+                            <Icon8
+                              name="circle"
+                              size={11}
+                              color="green"
+                            ></Icon8>
+                            <Text>Open</Text>
+                          </View>
+                        </View>
+                      </View>
+                      <View style={{ width: "100%" }}>
+                        <Text style={{ fontSize: 10 }}>{shop.ShopAddress}</Text>
+                      </View>
+                      <View
+                        style={{
+                          width: "100%",
+                          flexDirection: "row",
+                          gap: 7,
+                          paddingVertical: 5,
+                        }}
+                      >
+                        {shop.Stars &&
+                          [...Array(shop.Stars)].map((_, index) => {
+                            return (
+                              <Icon8
+                                key={index}
+                                name="star"
+                                size={20}
+                                color="orange"
+                              ></Icon8>
+                            );
+                          })}
+
+                        {/* <Icon8 name="star" size={20} color="orange"></Icon8>
+                        <Icon8 name="star" size={20} color="orange"></Icon8>
+                        <Icon8 name="star" size={20} color="orange"></Icon8>
+                        <Icon8 name="star" size={20} color="orange"></Icon8>
+                        <Icon8
+                          name="star-half-full"
+                          size={20}
+                          color="orange"
+                        ></Icon8> */}
+                      </View>
+                    </View>
+
+                    <View
+                      style={{
+                        width: "15%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Icon4 name="heart" size={24} color="red"></Icon4>
+                    </View>
+
+                    <View style={{ width: "42%" }}>
+                      <View
+                        style={{
+                          width: "100%",
+                          flexDirection: "row",
+                          alignItems: "baseline",
+                          justifyContent: "space-evenly",
+                        }}
+                      >
+                        {shop.Can5L && (
+                          <View
+                            style={{
+                              display: "flex",
+                              flexDirection: "row",
+                              alignItems: "baseline",
+                            }}
+                          >
+                            <Icon10
+                              name="bottle-water"
+                              size={15}
+                              color="black"
+                            ></Icon10>
+                            <Text>5L</Text>
+                          </View>
+                        )}
+
+                        {shop.Can10L && (
+                          <View
+                            style={{
+                              display: "flex",
+                              flexDirection: "row",
+                              alignItems: "baseline",
+                            }}
+                          >
+                            <Icon10
+                              name="bottle-water"
+                              size={20}
+                              color="black"
+                            ></Icon10>
+                            <Text>10L</Text>
+                          </View>
+                        )}
+
+                        {shop.Can20L && (
+                          <View
+                            style={{
+                              display: "flex",
+                              flexDirection: "row",
+                              alignItems: "baseline",
+                            }}
+                          >
+                            <Icon10
+                              name="bottle-water"
+                              size={25}
+                              color="black"
+                            ></Icon10>
+                            <Text>20L</Text>
+                          </View>
+                        )}
+                      </View>
+                      <View style={{ width: "100%", padding: 15 }}>
+                        <Text
+                          style={{
+                            backgroundColor: "orange",
+                            textAlign: "center",
+                            padding: 5,
+                            borderRadius: 5,
+                          }}
+                          onPress={() =>
+                            navigation.navigate("shopview", { data: shop })
+                          }
+                        >
+                          Order now
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            );
+          })
+        ) : (
+          <View>No data</View>
+        )}
+
+        {/* <View
           style={{ width: "100%", paddingHorizontal: 15, paddingVertical: 5 }}
         >
           <View
@@ -190,147 +374,7 @@ const ShopsScreen = ({ navigation }) => {
               </View>
             </View>
           </View>
-        </View>
-
-        <View
-          style={{ width: "100%", paddingHorizontal: 15, paddingVertical: 5 }}
-        >
-          <View
-            style={{
-              width: "100%",
-              borderWidth: 1,
-              padding: 10,
-              borderColor: "gray",
-              borderRadius: 5,
-            }}
-          >
-            <View style={{ width: "100%", flexDirection: "row" }}>
-              <View style={{ width: "42%" }}>
-                <View style={{ width: "100%" }}>
-                  <View
-                    style={{
-                      width: "100%",
-                      flexDirection: "row",
-                      gap: 10,
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Text style={{ fontWeight: "bold", fontSize: 25 }}>
-                      Dwater
-                    </Text>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                        alignItems: "center",
-                        gap: 5,
-                      }}
-                    >
-                      <Icon8 name="circle" size={11} color="green"></Icon8>
-                      <Text>Open</Text>
-                    </View>
-                  </View>
-                </View>
-                <View style={{ width: "100%" }}>
-                  <Text style={{ fontSize: 10 }}>
-                    Perumal puram, Tirunelveli
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    width: "100%",
-                    flexDirection: "row",
-                    gap: 7,
-                    paddingVertical: 5,
-                  }}
-                >
-                  <Icon8 name="star" size={20} color="orange"></Icon8>
-                  <Icon8 name="star" size={20} color="orange"></Icon8>
-                  <Icon8 name="star" size={20} color="orange"></Icon8>
-                  <Icon8 name="star" size={20} color="orange"></Icon8>
-                  <Icon8 name="star-half-full" size={20} color="orange"></Icon8>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  width: "15%",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon4 name="heart" size={24} color="red"></Icon4>
-              </View>
-
-              <View style={{ width: "42%" }}>
-                <View
-                  style={{
-                    width: "100%",
-                    flexDirection: "row",
-                    alignItems: "baseline",
-                    justifyContent: "space-evenly",
-                  }}
-                >
-                  <View
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "baseline",
-                    }}
-                  >
-                    <Icon10
-                      name="bottle-water"
-                      size={15}
-                      color="black"
-                    ></Icon10>
-                    <Text>5L</Text>
-                  </View>
-                  <View
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "baseline",
-                    }}
-                  >
-                    <Icon10
-                      name="bottle-water"
-                      size={20}
-                      color="black"
-                    ></Icon10>
-                    <Text>10L</Text>
-                  </View>
-                  <View
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "baseline",
-                    }}
-                  >
-                    <Icon10
-                      name="bottle-water"
-                      size={25}
-                      color="black"
-                    ></Icon10>
-                    <Text>20L</Text>
-                  </View>
-                </View>
-                <View style={{ width: "100%", padding: 15 }}>
-                  <Text
-                    style={{
-                      backgroundColor: "orange",
-                      textAlign: "center",
-                      padding: 5,
-                      borderRadius: 5,
-                    }}
-                    onPress={() => navigation.navigate("shopview")}
-                  >
-                    Order now
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
+        </View> */}
       </ScrollView>
 
       <BottomTabBar navigation={navigation} />

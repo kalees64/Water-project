@@ -7,8 +7,14 @@ import BottomTabBar from "./BottomTabBar";
 import DataContext from "../context/DataContext";
 
 const HomeScreen = ({ navigation }) => {
-  const { setHomeState, setShopstate, setAccState, setCartState } =
-    useContext(DataContext);
+  const {
+    setHomeState,
+    setShopstate,
+    setAccState,
+    setCartState,
+    getShops,
+    shops,
+  } = useContext(DataContext);
   const [slideState, setSlideState] = useState(true);
 
   const slider = () => {
@@ -16,13 +22,16 @@ const HomeScreen = ({ navigation }) => {
     setSlideState(!slideState);
   };
 
-  setTimeout(slider, 3000);
+  () => {
+    setTimeout(slider, 5000);
+  };
 
   useEffect(() => {
     setHomeState(true);
     setShopstate(false);
     setAccState(false);
     setCartState(false);
+    getShops();
   }, []);
 
   return (
@@ -52,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
           >
             <Image
               source={require("../assets/images/scroll_1.jpeg")}
-              style={{ borderRadius: 15, width: "95%" }}
+              style={{ borderRadius: 15, width: "95%", height: 300 }}
             />
             <Text
               style={{
@@ -78,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
           >
             <Image
               source={require("../assets/images/background_2.png")}
-              style={{ borderRadius: 15, width: "95%" }}
+              style={{ borderRadius: 15, width: "95%", height: 300 }}
             />
             <Text
               style={{
@@ -104,12 +113,12 @@ const HomeScreen = ({ navigation }) => {
         >
           <Icon9
             name={`${slideState ? "dot-fill" : "dot"}`}
-            onPress={() => setSlideState(false)}
+            onPress={() => setSlideState(!slideState)}
             size={30}
           ></Icon9>
           <Icon9
             name={`${slideState ? "dot" : "dot-fill"}`}
-            onPress={() => setSlideState(true)}
+            onPress={() => setSlideState(!slideState)}
             size={30}
           ></Icon9>
         </View>
@@ -131,6 +140,137 @@ const HomeScreen = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
+          {shops.length > 0 ? (
+            shops.map((shop) => {
+              // console.log(shop);
+              return (
+                <View
+                  key={shop.ShopId}
+                  style={{
+                    width: "40%",
+                    padding: 7,
+                    shadowColor: "gray",
+                    shadowOffset: { width: 2, height: 4 },
+                    shadowOpacity: 0.5,
+                    borderRadius: 10,
+                    borderColor: "gray",
+                    borderWidth: 1,
+                    paddingHorizontal: 10,
+                  }}
+                >
+                  <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                    {shop.ShopName}
+                  </Text>
+                  {/* <Text style={{ fontSize: 13 }}>Perumal Puram,</Text> */}
+                  <Text style={{ fontSize: 13 }}>{shop.ShopAddress}</Text>
+                  <View
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      paddingVertical: 10,
+                      justifyContent: "center",
+                    }}
+                  >
+                    {shop.Stars &&
+                      [...Array(shop.Stars)].map((_, index) => {
+                        return (
+                          <Icon8
+                            key={index}
+                            name="star"
+                            size={20}
+                            color="orange"
+                          ></Icon8>
+                        );
+                      })}
+                    {/* <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+                    <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+                    <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+                    <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+                    <Icon8
+                      name="star-half-full"
+                      color="#ffb504"
+                      size={20}
+                    ></Icon8> */}
+                  </View>
+                  <View
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        backgroundColor: "#ffb504",
+                        padding: 10,
+                        borderRadius: 40,
+                        shadowColor: "gray",
+                        shadowOffset: { width: 2, height: 2 },
+                      }}
+                      onPress={() =>
+                        navigation.navigate("shopview", { data: shop })
+                      }
+                    >
+                      Shop Now
+                    </Text>
+                  </View>
+                </View>
+              );
+            })
+          ) : (
+            <View>No Data</View>
+          )}
+
+          {/* <View
+            style={{
+              width: "40%",
+              padding: 7,
+              shadowColor: "gray",
+              shadowOffset: { width: 2, height: 4 },
+              shadowOpacity: 0.5,
+              borderRadius: 10,
+              borderColor: "gray",
+              borderWidth: 1,
+              paddingHorizontal: 10,
+            }}
+          >
+            <Text style={{ fontWeight: "bold", fontSize: 25 }}>Dwater</Text>
+            <Text style={{ fontSize: 13 }}>Perumal Puram,</Text>
+            <Text style={{ fontSize: 13 }}>Tirunelveli</Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingVertical: 10,
+                justifyContent: "center",
+              }}
+            >
+              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+              <Icon8 name="star-half-full" color="#ffb504" size={20}></Icon8>
+            </View>
+            <View
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  backgroundColor: "#ffb504",
+                  padding: 10,
+                  borderRadius: 40,
+                  shadowColor: "gray",
+                  shadowOffset: { width: 2, height: 2 },
+                }}
+              >
+                Shop Now
+              </Text>
+            </View>
+          </View>
           <View
             style={{
               width: "40%",
@@ -176,7 +316,6 @@ const HomeScreen = ({ navigation }) => {
                   shadowColor: "gray",
                   shadowOffset: { width: 2, height: 2 },
                 }}
-                onPress={() => navigation.navigate("shopview")}
               >
                 Shop Now
               </Text>
@@ -231,107 +370,7 @@ const HomeScreen = ({ navigation }) => {
                 Shop Now
               </Text>
             </View>
-          </View>
-          <View
-            style={{
-              width: "40%",
-              padding: 7,
-              shadowColor: "gray",
-              shadowOffset: { width: 2, height: 4 },
-              shadowOpacity: 0.5,
-              borderRadius: 10,
-              borderColor: "gray",
-              borderWidth: 1,
-              paddingHorizontal: 10,
-            }}
-          >
-            <Text style={{ fontWeight: "bold", fontSize: 25 }}>Dwater</Text>
-            <Text style={{ fontSize: 13 }}>Perumal Puram,</Text>
-            <Text style={{ fontSize: 13 }}>Tirunelveli</Text>
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                paddingVertical: 10,
-                justifyContent: "center",
-              }}
-            >
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star-half-full" color="#ffb504" size={20}></Icon8>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  backgroundColor: "#ffb504",
-                  padding: 10,
-                  borderRadius: 40,
-                  shadowColor: "gray",
-                  shadowOffset: { width: 2, height: 2 },
-                }}
-              >
-                Shop Now
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: "40%",
-              padding: 7,
-              shadowColor: "gray",
-              shadowOffset: { width: 2, height: 4 },
-              shadowOpacity: 0.5,
-              borderRadius: 10,
-              borderColor: "gray",
-              borderWidth: 1,
-              paddingHorizontal: 10,
-            }}
-          >
-            <Text style={{ fontWeight: "bold", fontSize: 25 }}>Dwater</Text>
-            <Text style={{ fontSize: 13 }}>Perumal Puram,</Text>
-            <Text style={{ fontSize: 13 }}>Tirunelveli</Text>
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                paddingVertical: 10,
-                justifyContent: "center",
-              }}
-            >
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star" color="#ffb504" size={20}></Icon8>
-              <Icon8 name="star-half-full" color="#ffb504" size={20}></Icon8>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  backgroundColor: "#ffb504",
-                  padding: 10,
-                  borderRadius: 40,
-                  shadowColor: "gray",
-                  shadowOffset: { width: 2, height: 2 },
-                }}
-              >
-                Shop Now
-              </Text>
-            </View>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
 

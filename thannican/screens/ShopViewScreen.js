@@ -12,7 +12,9 @@ import Icon7 from "react-native-vector-icons/AntDesign";
 import Icon8 from "react-native-vector-icons/EvilIcons";
 import Icon9 from "react-native-vector-icons/FontAwesome6";
 
-const ShopViewScreen = ({ navigation }) => {
+const ShopViewScreen = ({ navigation, route }) => {
+  const { data } = route.params;
+  console.log(data);
   return (
     <SafeAreaView style={{ width: "100%", height: "100%" }}>
       <TopBar navigation={navigation} />
@@ -48,8 +50,10 @@ const ShopViewScreen = ({ navigation }) => {
           }}
         >
           <View style={{ marginBottom: 20 }}>
-            <Text style={{ fontSize: 22, fontWeight: "bold" }}>Dwater</Text>
-            <Text style={{ fontSize: 13 }}>Perumal Puram,Tirunelveli</Text>
+            <Text style={{ fontSize: 22, fontWeight: "bold" }}>
+              {data.ShopName}
+            </Text>
+            <Text style={{ fontSize: 13 }}>{data.ShopAddress}</Text>
           </View>
           <View>
             <Icon7
@@ -82,420 +86,459 @@ const ShopViewScreen = ({ navigation }) => {
                 color="#FFA500"
                 style={{ fontSize: 20, fontWeight: "bold", marginRight: 10 }}
               ></Icon1>
-              <Text style={{ fontSize: 17, fontWeight: "bold" }}>4.5</Text>
+              <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                {data.Stars}
+              </Text>
             </View>
             <Text>1K Reviews</Text>
           </View>
           <View>
             <Text style={{ fontSize: 16, color: "green" }}>Timings</Text>
-            <Text>7am-7pm</Text>
+            <Text>
+              {data.OpenTime} am -{" "}
+              {Number(data.CloseTime) > 12
+                ? Number(data.CloseTime) - 12 + ".00"
+                : data.CloseTime}{" "}
+              pm
+            </Text>
           </View>
           <View>
             <Text style={{ fontSize: 16, color: "green" }}>Open</Text>
-            <Text>For Delivery</Text>
+            <Text>{data.FreeDelivery ? "Free" : "Paid"} Delivery</Text>
           </View>
         </View>
       </View>
 
       <ScrollView>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            borderColor: "#aeaeae",
-            borderWidth: 1,
-            marginTop: 20,
-            marginLeft: 17,
-            marginRight: 17,
-            height: 160,
-            shadowColor: "#aeaeae",
-            shadowOffset: { width: 2, height: 4 },
-            borderRadius: 10,
-            justifyContent: "space-between",
-          }}
-        >
-          <View>
-            <Image
-              source={require("../assets/images/5litre.png")}
-              style={{ marginTop: 20, marginLeft: 30, marginRight: 40 }}
-            ></Image>
-          </View>
-          <View style={{ marginTop: 25, marginLeft: 30, marginRight: 40 }}>
-            <View style={{ marginBottom: 30 }}>
-              <Text
-                style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
-              >
-                Water Can
-              </Text>
-              <View
-                style={{ display: "flex", flexDirection: "row", marginLeft: 8 }}
-              >
-                <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
-                <Text style={{}}>05 Liters</Text>
-              </View>
+        {data.Can5L && (
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              borderColor: "#aeaeae",
+              borderWidth: 1,
+              marginTop: 20,
+              marginLeft: 17,
+              marginRight: 17,
+              height: 160,
+              shadowColor: "#aeaeae",
+              shadowOffset: { width: 2, height: 4 },
+              borderRadius: 10,
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <Image
+                source={require("../assets/images/5litre.png")}
+                style={{ marginTop: 20, marginLeft: 30, marginRight: 40 }}
+              ></Image>
             </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginRight: 30,
-                }}
-              >
-                <Icon9
-                  name="indian-rupee-sign"
-                  style={{ fontSize: 20, fontWeight: "bold" }}
-                ></Icon9>
+            <View style={{ marginTop: 25, marginLeft: 30, marginRight: 40 }}>
+              <View style={{ marginBottom: 30 }}>
                 <Text
-                  style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
                 >
-                  60
+                  Water Can
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginLeft: 8,
+                  }}
+                >
+                  <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
+                  <Text style={{}}>05 Liters</Text>
+                </View>
+              </View>
+              <View style={{ display: "flex", flexDirection: "row" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginRight: 30,
+                  }}
+                >
+                  <Icon9
+                    name="indian-rupee-sign"
+                    style={{ fontSize: 20, fontWeight: "bold" }}
+                  ></Icon9>
+                  <Text
+                    style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  >
+                    {data.Can5LPrice}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    shadowColor: "#b3b3b3",
+                    shadowOffset: { width: 2, height: 4 },
+                    color: "black",
+                    borderRadius: 8,
+                    fontSize: 17,
+                    backgroundColor: "#FFA500",
+                    width: 80,
+                    height: 30,
+                    paddingLeft: 20,
+                    marginRight: 8,
+                    paddingTop: 4,
+                  }}
+                >
+                  Add
                 </Text>
               </View>
-              <Text
-                style={{
-                  shadowColor: "#b3b3b3",
-                  shadowOffset: { width: 2, height: 4 },
-                  color: "black",
-                  borderRadius: 8,
-                  fontSize: 17,
-                  backgroundColor: "#FFA500",
-                  width: 80,
-                  height: 30,
-                  paddingLeft: 20,
-                  marginRight: 8,
-                  paddingTop: 4,
-                }}
-              >
-                Add
-              </Text>
             </View>
           </View>
-        </View>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            borderColor: "#aeaeae",
-            borderWidth: 1,
-            marginTop: 20,
-            marginLeft: 17,
-            marginRight: 17,
-            height: 160,
-            shadowColor: "#b3b3b3",
-            shadowOffset: { width: 2, height: 4 },
-            borderRadius: 10,
-          }}
-        >
-          <View>
-            <Image
-              source={require("../assets/images/10 litre.png")}
-              style={{ marginTop: 20, marginLeft: 30, marginRight: 40 }}
-            ></Image>
-          </View>
-          <View style={{ marginTop: 25, marginLeft: 30, marginRight: 40 }}>
-            <View style={{ marginBottom: 30 }}>
-              <Text
-                style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
-              >
-                Water Can
-              </Text>
-              <View
-                style={{ display: "flex", flexDirection: "row", marginLeft: 8 }}
-              >
-                <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
-                <Text style={{}}>10 Liters</Text>
-              </View>
+        )}
+
+        {data.Can10L && (
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              borderColor: "#aeaeae",
+              borderWidth: 1,
+              marginTop: 20,
+              marginLeft: 17,
+              marginRight: 17,
+              height: 160,
+              shadowColor: "#b3b3b3",
+              shadowOffset: { width: 2, height: 4 },
+              borderRadius: 10,
+            }}
+          >
+            <View>
+              <Image
+                source={require("../assets/images/10 litre.png")}
+                style={{ marginTop: 20, marginLeft: 30, marginRight: 40 }}
+              ></Image>
             </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginRight: 30,
-                }}
-              >
-                <Icon9
-                  name="indian-rupee-sign"
-                  style={{ fontSize: 20, fontWeight: "bold" }}
-                ></Icon9>
+            <View style={{ marginTop: 25, marginLeft: 30, marginRight: 40 }}>
+              <View style={{ marginBottom: 30 }}>
                 <Text
-                  style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
                 >
-                  25
+                  Water Can
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginLeft: 8,
+                  }}
+                >
+                  <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
+                  <Text style={{}}>10 Liters</Text>
+                </View>
+              </View>
+              <View style={{ display: "flex", flexDirection: "row" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginRight: 30,
+                  }}
+                >
+                  <Icon9
+                    name="indian-rupee-sign"
+                    style={{ fontSize: 20, fontWeight: "bold" }}
+                  ></Icon9>
+                  <Text
+                    style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  >
+                    {data.Can10LPrice}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    shadowColor: "#b3b3b3",
+                    shadowOffset: { width: 2, height: 4 },
+                    color: "black",
+                    borderRadius: 8,
+                    fontSize: 17,
+                    backgroundColor: "#FFA500",
+                    width: 80,
+                    height: 30,
+                    paddingLeft: 14,
+                    marginRight: 8,
+                    paddingTop: 4,
+                  }}
+                >
+                  Add
                 </Text>
               </View>
-              <Text
-                style={{
-                  shadowColor: "#b3b3b3",
-                  shadowOffset: { width: 2, height: 4 },
-                  color: "black",
-                  borderRadius: 8,
-                  fontSize: 17,
-                  backgroundColor: "#FFA500",
-                  width: 80,
-                  height: 30,
-                  paddingLeft: 14,
-                  marginRight: 8,
-                  paddingTop: 4,
-                }}
-              >
-                Added
-              </Text>
             </View>
           </View>
-        </View>
+        )}
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            borderColor: "#aeaeae",
-            justifyContent: "space-between",
-            borderWidth: 1,
-            marginTop: 20,
-            marginLeft: 17,
-            marginRight: 17,
-            height: 160,
-            shadowColor: "#b3b3b3",
-            shadowOffset: { width: 2, height: 4 },
-            borderRadius: 10,
-          }}
-        >
-          <View>
-            <Image
-              source={require("../assets/images/20litre.png")}
-              style={{
-                marginTop: 20,
-                marginLeft: 30,
-                marginRight: 40,
-                width: 100,
-                height: 100,
-              }}
-            ></Image>
-          </View>
-          <View style={{ marginTop: 25, marginLeft: 0, marginRight: 40 }}>
-            <View style={{ marginBottom: 30 }}>
-              <Text
-                style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
-              >
-                Water Can
-              </Text>
-              <View
-                style={{ display: "flex", flexDirection: "row", marginLeft: 8 }}
-              >
-                <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
-                <Text style={{}}>20 Liters</Text>
-              </View>
-            </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <View
+        {data.Can20L && (
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              borderColor: "#aeaeae",
+              justifyContent: "space-between",
+              borderWidth: 1,
+              marginTop: 20,
+              marginLeft: 17,
+              marginRight: 17,
+              height: 160,
+              shadowColor: "#b3b3b3",
+              shadowOffset: { width: 2, height: 4 },
+              borderRadius: 10,
+            }}
+          >
+            <View>
+              <Image
+                source={require("../assets/images/20litre.png")}
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginRight: 30,
+                  marginTop: 20,
+                  marginLeft: 30,
+                  marginRight: 40,
+                  width: 100,
+                  height: 100,
                 }}
-              >
-                <Icon9
-                  name="indian-rupee-sign"
-                  style={{ fontSize: 20, fontWeight: "bold" }}
-                ></Icon9>
+              ></Image>
+            </View>
+            <View style={{ marginTop: 25, marginLeft: 0, marginRight: 40 }}>
+              <View style={{ marginBottom: 30 }}>
                 <Text
-                  style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
                 >
-                  30
+                  Water Can
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginLeft: 8,
+                  }}
+                >
+                  <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
+                  <Text style={{}}>20 Liters</Text>
+                </View>
+              </View>
+              <View style={{ display: "flex", flexDirection: "row" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginRight: 30,
+                  }}
+                >
+                  <Icon9
+                    name="indian-rupee-sign"
+                    style={{ fontSize: 20, fontWeight: "bold" }}
+                  ></Icon9>
+                  <Text
+                    style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  >
+                    {data.Can20LPrice}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    shadowColor: "#b3b3b3",
+                    shadowOffset: { width: 2, height: 4 },
+                    color: "black",
+                    borderRadius: 8,
+                    fontSize: 17,
+                    backgroundColor: "#FFA500",
+                    width: 80,
+                    height: 30,
+                    paddingLeft: 14,
+                    marginRight: 8,
+                    paddingTop: 4,
+                  }}
+                >
+                  Add
                 </Text>
               </View>
-              <Text
-                style={{
-                  shadowColor: "#b3b3b3",
-                  shadowOffset: { width: 2, height: 4 },
-                  color: "black",
-                  borderRadius: 8,
-                  fontSize: 17,
-                  backgroundColor: "#FFA500",
-                  width: 80,
-                  height: 30,
-                  paddingLeft: 14,
-                  marginRight: 8,
-                  paddingTop: 4,
-                }}
-              >
-                Added
-              </Text>
             </View>
           </View>
-        </View>
+        )}
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            borderColor: "#aeaeae",
-            borderWidth: 1,
-            marginTop: 20,
-            marginLeft: 17,
-            marginRight: 17,
-            height: 160,
-            shadowColor: "#b3b3b3",
-            shadowOffset: { width: 2, height: 4 },
-            borderRadius: 10,
-          }}
-        >
-          <View>
-            <Image
-              source={require("../assets/images/dispenser can.png")}
-              style={{
-                marginTop: 20,
-                marginLeft: 30,
-                marginRight: 40,
-                width: 100,
-                height: 100,
-              }}
-            ></Image>
-          </View>
-          <View style={{ marginTop: 25, marginLeft: 0, marginRight: 40 }}>
-            <View style={{ marginBottom: 30 }}>
-              <Text
-                style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
-              >
-                Dispenser Can
-              </Text>
-
-              <View
-                style={{ display: "flex", flexDirection: "row", marginLeft: 8 }}
-              >
-                <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
-                <Text style={{}}>10 Liters</Text>
-              </View>
-            </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <View
+        {data.DCan10L && (
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              borderColor: "#aeaeae",
+              borderWidth: 1,
+              marginTop: 20,
+              marginLeft: 17,
+              marginRight: 17,
+              height: 160,
+              shadowColor: "#b3b3b3",
+              shadowOffset: { width: 2, height: 4 },
+              borderRadius: 10,
+            }}
+          >
+            <View>
+              <Image
+                source={require("../assets/images/dispenser can.png")}
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginRight: 30,
+                  marginTop: 20,
+                  marginLeft: 30,
+                  marginRight: 40,
+                  width: 100,
+                  height: 100,
                 }}
-              >
-                <Icon9
-                  name="indian-rupee-sign"
-                  style={{ fontSize: 20, fontWeight: "bold" }}
-                ></Icon9>
+              ></Image>
+            </View>
+            <View style={{ marginTop: 25, marginLeft: 0, marginRight: 40 }}>
+              <View style={{ marginBottom: 30 }}>
                 <Text
-                  style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  style={{ fontSize: 20, fontWeight: "bold", marginBottom: 7 }}
                 >
-                  90
+                  Dispenser Can
+                </Text>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginLeft: 8,
+                  }}
+                >
+                  <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
+                  <Text style={{}}>10 Liters</Text>
+                </View>
+              </View>
+              <View style={{ display: "flex", flexDirection: "row" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginRight: 30,
+                  }}
+                >
+                  <Icon9
+                    name="indian-rupee-sign"
+                    style={{ fontSize: 20, fontWeight: "bold" }}
+                  ></Icon9>
+                  <Text
+                    style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  >
+                    {data.DCan10LPrice}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    shadowColor: "#b3b3b3",
+                    shadowOffset: { width: 2, height: 4 },
+                    color: "black",
+                    borderRadius: 8,
+                    fontSize: 17,
+                    backgroundColor: "#FFA500",
+                    width: 80,
+                    height: 30,
+                    paddingLeft: 14,
+                    marginRight: 8,
+                    paddingTop: 4,
+                  }}
+                >
+                  Add
                 </Text>
               </View>
-              <Text
-                style={{
-                  shadowColor: "#b3b3b3",
-                  shadowOffset: { width: 2, height: 4 },
-                  color: "black",
-                  borderRadius: 8,
-                  fontSize: 17,
-                  backgroundColor: "#FFA500",
-                  width: 80,
-                  height: 30,
-                  paddingLeft: 14,
-                  marginRight: 8,
-                  paddingTop: 4,
-                }}
-              >
-                Added
-              </Text>
             </View>
           </View>
-        </View>
+        )}
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            borderColor: "#aeaeae",
-            justifyContent: "space-between",
-            borderWidth: 1,
-            marginTop: 20,
-            marginLeft: 17,
-            marginRight: 17,
-            height: 160,
-            shadowColor: "#b3b3b3",
-            shadowOffset: { width: 2, height: 4 },
-            borderRadius: 10,
-          }}
-        >
-          <View>
-            <Image
-              source={require("../assets/images/dispenser pump.png")}
-              style={{
-                marginTop: 20,
-                marginLeft: 30,
-                marginRight: 40,
-                width: 100,
-                height: 100,
-              }}
-            ></Image>
-          </View>
-          <View style={{ marginTop: 25, marginLeft: 0, marginRight: 40 }}>
-            <View style={{ marginBottom: 30 }}>
-              <Text
+        {data.DPumb20L && (
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              borderColor: "#aeaeae",
+              justifyContent: "space-between",
+              borderWidth: 1,
+              marginTop: 20,
+              marginLeft: 17,
+              marginRight: 17,
+              height: 160,
+              shadowColor: "#b3b3b3",
+              shadowOffset: { width: 2, height: 4 },
+              borderRadius: 10,
+            }}
+          >
+            <View>
+              <Image
+                source={require("../assets/images/dispenser pump.png")}
                 style={{
-                  fontSize: 20,
-                  fontWeight: "bold",
-                  marginBottom: 7,
-                  marginRight: -20,
+                  marginTop: 20,
+                  marginLeft: 30,
+                  marginRight: 40,
+                  width: 100,
+                  height: 100,
                 }}
-              >
-                Dispenser Pump
-              </Text>
-
-              <View
-                style={{ display: "flex", flexDirection: "row", marginLeft: 8 }}
-              >
-                <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
-                <Text style={{}}>20 Liters</Text>
-              </View>
+              ></Image>
             </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginRight: 30,
-                }}
-              >
-                <Icon9
-                  name="indian-rupee-sign"
-                  style={{ fontSize: 20, fontWeight: "bold" }}
-                ></Icon9>
+            <View style={{ marginTop: 25, marginLeft: 0, marginRight: 40 }}>
+              <View style={{ marginBottom: 30 }}>
                 <Text
-                  style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  style={{
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    marginBottom: 7,
+                    marginRight: -20,
+                  }}
                 >
-                  90
+                  Dispenser Pump
+                </Text>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginLeft: 8,
+                  }}
+                >
+                  <Icon9 name="bottle-water" style={{ fontSize: 17 }}></Icon9>
+                  <Text style={{}}>20 Liters</Text>
+                </View>
+              </View>
+              <View style={{ display: "flex", flexDirection: "row" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginRight: 30,
+                  }}
+                >
+                  <Icon9
+                    name="indian-rupee-sign"
+                    style={{ fontSize: 20, fontWeight: "bold" }}
+                  ></Icon9>
+                  <Text
+                    style={{ fontSize: 23, fontWeight: "bold", marginTop: -7 }}
+                  >
+                    {data.DPumb20LPrice}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    shadowColor: "#b3b3b3",
+                    shadowOffset: { width: 2, height: 4 },
+                    color: "black",
+                    borderRadius: 8,
+                    fontSize: 17,
+                    backgroundColor: "#FFA500",
+                    width: 80,
+                    height: 30,
+                    paddingLeft: 14,
+                    marginRight: 8,
+                    paddingTop: 4,
+                  }}
+                >
+                  Add
                 </Text>
               </View>
-              <Text
-                style={{
-                  shadowColor: "#b3b3b3",
-                  shadowOffset: { width: 2, height: 4 },
-                  color: "black",
-                  borderRadius: 8,
-                  fontSize: 17,
-                  backgroundColor: "#FFA500",
-                  width: 80,
-                  height: 30,
-                  paddingLeft: 14,
-                  marginRight: 8,
-                  paddingTop: 4,
-                }}
-              >
-                Added
-              </Text>
             </View>
           </View>
-        </View>
+        )}
 
         <Text
           style={{
