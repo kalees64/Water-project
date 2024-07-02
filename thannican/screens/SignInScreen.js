@@ -116,7 +116,7 @@ const SignInScreen = ({ navigation }) => {
             style={{ textAlign: "right", fontWeight: "bold" }}
             onPress={() => navigation.navigate("forgotPass")}
           >
-            Forget Password?
+            Forgot Password?
           </Text>
         </View>
         <View

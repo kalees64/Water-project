@@ -1,7 +1,9 @@
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { createContext, useState } from "react";
 import { Alert } from "react-native";
-import { db } from "../services/FireBaseAuth";
+import auth, { db } from "../services/FireBaseAuth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DataContext = createContext({});
 
@@ -44,6 +46,41 @@ export const DataProvider = ({ children }) => {
     });
   };
 
+  //Create the user
+  const [userName, setUserName] = useState("");
+  const [userMail, setUserMail] = useState("");
+  const [userPass, setUserPass] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userAddress, setUserAddress] = useState("");
+  const [userPincode, setUserPincode] = useState("");
+
+  const handleRegister = async (user) => {
+    const getUser = await getDocs(
+      query(collection(db, "users"), where("UserPhone", "==", user.UserPhone))
+    );
+    if (getUser.docs.length === 0) {
+      console.log("User Not Found");
+      // createUserWithEmailAndPassword(auth, user.UserEmail, user.UserPass);
+      const newUser = await addDoc(collection(db, "users"), user);
+      console.log(newUser.id);
+      AsyncStorage.setItem("user", JSON.stringify(user));
+    } else {
+      console.log("User Found");
+      getUser.forEach((user) => {
+        console.log(user.data());
+      });
+    }
+  };
+
+  //Check Logged in or not
+
+  const [logIn, setLogIn] = useState(false);
+
+  const checkLogin = async () => {
+    const user = await AsyncStorage.getItem("user");
+    console.log(JSON.parse(user));
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -63,6 +100,22 @@ export const DataProvider = ({ children }) => {
         getShops,
         shops,
         setShops,
+        userName,
+        setUserName,
+        userMail,
+        setUserMail,
+        userPass,
+        setUserPass,
+        userPhone,
+        setUserPhone,
+        userAddress,
+        setUserAddress,
+        userPincode,
+        setUserPincode,
+        handleRegister,
+        checkLogin,
+        logIn,
+        setLogIn,
       }}
     >
       {children}

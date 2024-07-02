@@ -37,7 +37,7 @@ const ForgetPasswordScreen = ({ navigation }) => {
               paddingBottom: 30,
             }}
           >
-            Forget Password
+            Forgot Password
           </Text>
           <View
             style={{

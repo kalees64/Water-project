@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "expo-router";
 import { StyleSheet, ImageBackground } from "react-native";
 import { View, Text } from "react-native";
 import FontAwesome from "react-native-vector-icons/EvilIcons";
+import DataContext from "../context/DataContext";
 
 const LandingScreen = ({ navigation }) => {
+  const { checkLogin } = useContext(DataContext);
   return (
     <ImageBackground
       source={require("../assets/images/bg.jpg")}
@@ -25,7 +27,10 @@ const LandingScreen = ({ navigation }) => {
             name="play"
             size={40}
             color="white"
-            onPress={() => navigation.navigate("one")}
+            onPress={() => {
+              // navigation.navigate("one");
+              checkLogin();
+            }}
           />
         </View>
       </View>

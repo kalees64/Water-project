@@ -76,7 +76,7 @@ const ShopsScreen = ({ navigation }) => {
                   }}
                 >
                   <View style={{ width: "100%", flexDirection: "row" }}>
-                    <View style={{ width: "42%" }}>
+                    <View style={{ width: "50%" }}>
                       <View style={{ width: "100%" }}>
                         <View
                           style={{
@@ -113,51 +113,9 @@ const ShopsScreen = ({ navigation }) => {
                         style={{
                           width: "100%",
                           flexDirection: "row",
-                          gap: 7,
-                          paddingVertical: 5,
-                        }}
-                      >
-                        {shop.Stars &&
-                          [...Array(shop.Stars)].map((_, index) => {
-                            return (
-                              <Icon8
-                                key={index}
-                                name="star"
-                                size={20}
-                                color="orange"
-                              ></Icon8>
-                            );
-                          })}
-
-                        {/* <Icon8 name="star" size={20} color="orange"></Icon8>
-                        <Icon8 name="star" size={20} color="orange"></Icon8>
-                        <Icon8 name="star" size={20} color="orange"></Icon8>
-                        <Icon8 name="star" size={20} color="orange"></Icon8>
-                        <Icon8
-                          name="star-half-full"
-                          size={20}
-                          color="orange"
-                        ></Icon8> */}
-                      </View>
-                    </View>
-
-                    <View
-                      style={{
-                        width: "15%",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Icon4 name="heart" size={24} color="red"></Icon4>
-                    </View>
-
-                    <View style={{ width: "42%" }}>
-                      <View
-                        style={{
-                          width: "100%",
-                          flexDirection: "row",
                           alignItems: "baseline",
-                          justifyContent: "space-evenly",
+                          justifyContent: "flex-start",
+                          gap: 10,
                         }}
                       >
                         {shop.Can5L && (
@@ -210,6 +168,33 @@ const ShopsScreen = ({ navigation }) => {
                             <Text>20L</Text>
                           </View>
                         )}
+                      </View>
+                    </View>
+
+                    <View style={{ width: "50%" }}>
+                      <View
+                        style={{
+                          width: "100%",
+                          flexDirection: "row",
+                          gap: 10,
+                          paddingVertical: 5,
+                          paddingHorizontal: 10,
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <View style={{ flexDirection: "row", gap: 5 }}>
+                          <Icon8 name="star" size={20} color="orange"></Icon8>
+                          <Text>{shop.Stars}</Text>
+                        </View>
+                        <View
+                          style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Icon4 name="heart" size={24} color="red"></Icon4>
+                        </View>
                       </View>
                       <View style={{ width: "100%", padding: 15 }}>
                         <Text

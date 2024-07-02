@@ -9,7 +9,6 @@ import EntranceScreen from "../screens/EntranceScreen";
 import SignInScreen from "../screens/SignInScreen";
 import ForgetPasswordScreen from "../screens/ForgetPasswordScreen";
 import CreateUserScreen1 from "../screens/CreateUserScreen1";
-import CreateUserScreen2 from "../screens/CreateUserScreen2";
 import "./App.css";
 import HomeScreen from "../screens/HomeScreen";
 import { DataProvider } from "../context/DataContext";
@@ -69,11 +68,7 @@ export default function Page() {
               component={CreateUserScreen1}
               options={{ headerShown: false }}
             />
-            <Stack.Screen
-              name="signup"
-              component={CreateUserScreen2}
-              options={{ headerShown: false }}
-            />
+
             <Stack.Screen
               name="home"
               component={HomeScreen}

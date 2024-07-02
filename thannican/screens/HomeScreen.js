@@ -168,10 +168,12 @@ const HomeScreen = ({ navigation }) => {
                       display: "flex",
                       flexDirection: "row",
                       paddingVertical: 10,
-                      justifyContent: "center",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      gap: 10,
                     }}
                   >
-                    {shop.Stars &&
+                    {/* {shop.Stars &&
                       [...Array(shop.Stars)].map((_, index) => {
                         return (
                           <Icon8
@@ -181,9 +183,10 @@ const HomeScreen = ({ navigation }) => {
                             color="orange"
                           ></Icon8>
                         );
-                      })}
-                    {/* <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+                      })} */}
                     <Icon8 name="star" color="#ffb504" size={20}></Icon8>
+                    <Text style={{ fontSize: 20 }}>{shop.Stars}</Text>
+                    {/* <Icon8 name="star" color="#ffb504" size={20}></Icon8>
                     <Icon8 name="star" color="#ffb504" size={20}></Icon8>
                     <Icon8 name="star" color="#ffb504" size={20}></Icon8>
                     <Icon8
