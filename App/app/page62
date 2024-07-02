@@ -1,0 +1,242 @@
+import { SafeAreaView, Text, View, Image } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import Icon1 from "react-native-vector-icons/Ionicons";
+import Icon2 from "react-native-vector-icons/MaterialIcons";
+import Icon3 from "react-native-vector-icons/EvilIcons";
+import Icon4 from "react-native-vector-icons/Entypo";
+import Icon5 from "react-native-vector-icons/Fontisto";
+import Icon6 from "react-native-vector-icons/Octicons";
+import Icon7 from "react-native-vector-icons/AntDesign";
+import Icon9 from "react-native-vector-icons/FontAwesome6";
+import Icon11 from "react-native-vector-icons/FontAwesome";
+import Icon12 from "react-native-vector-icons/AntDesign";
+import Icon14 from "react-native-vector-icons/AntDesign";
+export default function shops() {
+  return (
+    <SafeAreaView style={{ width: "100%", height: "100%", paddingBottom: 100 }}>
+      <View
+        style={{
+          width: "100%",
+          backgroundColor: "#3fbdf1",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: 10,
+        }}
+      >
+        <Text style={{ fontSize: 25, fontWeight: "bold" }}>THANNICAN</Text>
+        <View style={{ display: "flex", flexDirection: "row", gap: 15 }}>
+          <Icon1 name="search" size={25} color="white"></Icon1>
+          <Icon2 name="notifications-active" size={25} color="white"></Icon2>
+        </View>
+      </View>
+      <ScrollView>
+        <View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              padding: 20,
+              gap: 20,
+            }}
+          >
+            <Icon3 name="arrow-left" size={30} style={{}} color="black"></Icon3>
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+              Edit Address
+            </Text>
+          </View>
+
+          <View
+            style={{
+              width: "100%",
+              padding: 15,
+              paddingTop: 10,
+              paddingBottom: 0,
+            }}
+          >
+            <View style={{ width: "100%", paddingBottom: 50, gap: 20 }}>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <View
+                  style={{
+                    width: "30%",
+                    padding: 20,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderWidth: 1,
+                    borderColor: "#aeaeae",
+                    borderRadius: 10,
+                    shadowColor: "#aeaeae",
+                    shadowOffset: { width: 2, height: 4 },
+                    shadowOpacity: 0.5,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, fontWeight: 500 }}>4a/60</Text>
+                </View>
+                <View
+                  style={{
+                    width: "65%",
+                    padding: 20,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderWidth: 1,
+                    borderColor: "#aeaeae",
+                    borderRadius: 10,
+                    shadowColor: "#aeaeae",
+                    shadowOffset: { width: 2, height: 4 },
+                    shadowOpacity: 0.8,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, fontWeight: 500 }}>
+                    Samathanapuram
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  padding: 20,
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  borderWidth: 1,
+                  borderColor: "#aeaeae",
+                  borderRadius: 10,
+                  shadowColor: "#aeaeae",
+                  shadowOffset: { width: 2, height: 4 },
+                  shadowOpacity: 0.8,
+                }}
+              >
+                <Text style={{ fontSize: 20, fontWeight: 500 }}>City Name</Text>
+              </View>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <View
+                  style={{
+                    width: "45%",
+                    padding: 20,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderWidth: 1,
+                    borderColor: "#aeaeae",
+                    borderRadius: 10,
+                    shadowColor: "#aeaeae",
+                    shadowOffset: { width: 2, height: 4 },
+                    shadowOpacity: 0.8,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, fontWeight: 500 }}>
+                    Tamilnadu
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    width: "45%",
+                    padding: 20,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderWidth: 1,
+                    borderColor: "#aeaeae",
+                    borderRadius: 10,
+                    shadowColor: "#aeaeae",
+                    shadowOffset: { width: 2, height: 4 },
+                    shadowOpacity: 0.8,
+                  }}
+                >
+                  <Text style={{ fontSize: 20, fontWeight: 500 }}>600 005</Text>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  padding: 20,
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderWidth: 1,
+                  borderColor: "#aeaeae",
+                  borderRadius: 10,
+                  shadowColor: "#aeaeae",
+                  shadowOffset: { width: 2, height: 4 },
+                  shadowOpacity: 0.8,
+                  backgroundColor: "#ffb504",
+                  gap: 10,
+                }}
+              >
+                <Image source={require("@/assets/images/Location Off.png")} />
+                <Text style={{ fontSize: 20, fontWeight: 500 }}>
+                  Use My Location
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+      <View
+        style={{
+          position: "absolute",
+          display: "flex",
+          flexDirection: "row",
+          width: "100%",
+          bottom: 5,
+          padding: 15,
+          alignItems: "center",
+        }}
+      >
+        <View
+          style={{
+            width: "100%",
+            padding: 20,
+            display: "flex",
+            alignItems: "center",
+            borderWidth: 1,
+            borderColor: "#aeaeae",
+            borderRadius: 10,
+            shadowColor: "#aeaeae",
+            shadowOffset: { width: 2, height: 4 },
+            shadowOpacity: 0.8,
+            backgroundColor: "#3fbdf1",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: 500,
+              color: "white",
+              textAlign: "center",
+            }}
+          >
+            Save Address
+          </Text>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
