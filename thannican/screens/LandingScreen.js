@@ -28,7 +28,7 @@ const LandingScreen = ({ navigation }) => {
             size={40}
             color="white"
             onPress={() => {
-              // navigation.navigate("one");
+              navigation.navigate("one");
               checkLogin();
             }}
           />

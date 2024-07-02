@@ -79,6 +79,11 @@ export const DataProvider = ({ children }) => {
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem("user");
     console.log(JSON.parse(user));
+    if (user !== null) {
+      setLogIn(true);
+    } else {
+      setLogIn(false);
+    }
   };
 
   return (
