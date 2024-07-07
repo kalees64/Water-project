@@ -1,3 +1,4 @@
 UI design  
 User - https://www.figma.com/design/uqOrvlh7PPHSQtZO8VxDmA/Dwater?node-id=51-6&t=1FrM5KHuWkX8wu37-1
 Shop - https://www.figma.com/design/nJhNIVUPBlgR1HCwrpmkr5/Thannican-Shop?node-id=0-1&t=VS0cd5IHypt8Jifn-1
+Admin - https://www.figma.com/design/v0I8dwCYvgW54a5eUZy1Np/ThanniCan-Admin?node-id=14-3&t=D0ubk0WFdNWxn0qb-1
